@@ -108,7 +108,7 @@ namespace PETSurv
             {
                 ObservableCollection<Nationalities> _nationalitiesList = new ObservableCollection<Nationalities>(db.Nationalities.SqlQuery("Select * from Nationalities").ToList<Nationalities>());
                 return _nationalitiesList;
-            } 
+            }
         }
 
         ObservableCollection<Reports> reportsList
@@ -265,7 +265,7 @@ namespace PETSurv
             }
         }
         #endregion
-        #region
+        #region Payment Methods
         public void AddPaymentMethod(PaymentMethods paymentMethod)
         {
             db.PaymentMethods.Add(paymentMethod);
@@ -274,6 +274,56 @@ namespace PETSurv
         public void DeletePaymentMethod(PaymentMethods paymentMethod)
         {
             db.PaymentMethods.Remove(paymentMethod);
+            db.SaveChanges();
+        }
+        #endregion
+        #region Currencies
+        public void AddCurrency(Currencies currency)
+        {
+            db.Currencies.Add(currency);
+            db.SaveChanges();
+        }
+        public void DeleteCurrency(Currencies currency)
+        {
+            db.Currencies.Remove(currency);
+            db.SaveChanges();
+        }
+        #endregion
+        #region Nationalities
+        public void AddNationality(Nationalities nationality)
+        {
+            db.Nationalities.Add(nationality);
+            db.SaveChanges();
+        }
+        public void DeleteNationality(Nationalities nationality)
+        {
+            db.Nationalities.Remove(nationality);
+            db.SaveChanges();
+        }
+        #endregion
+        #region Reports
+        public void AddReport(Reports report)
+        {
+            db.Reports.Add(report);
+            db.SaveChanges();
+        }
+        public void DeleteReport(Reports report)
+        {
+            db.Reports.Remove(report);
+            db.SaveChanges();
+        }
+        public void UpdateReport(Reports report)
+        {
+            OldReports oldReport = new OldReports
+            {
+                ReportsId = report.Id
+            };
+            db.OldReports.Add(oldReport);
+
+            Reports newReport = new Reports();
+            newReport = report;
+            db.Reports.Add(newReport);
+
             db.SaveChanges();
         }
         #endregion
