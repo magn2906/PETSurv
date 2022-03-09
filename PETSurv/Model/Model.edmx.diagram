@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19bafb454ab04f40a64ac80b8f74f5dc" Name="Diagram1">
+        <EntityTypeShape EntityType="PETSurvDBModel.Agents" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Currencies" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.GroupMembers" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Groups" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Informants" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Logins" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Nationalities" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Observants" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.OldReports" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.PaymentMethods" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Persons" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETSurvDBModel.Reports" Width="1.5" PointX="7.5" PointY="14.25" IsExpanded="true" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Agents_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Agents_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_PaymentMethods_Currencies" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_GroupMembers_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_GroupMembers_Observants" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Informants_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Informants_PaymentMethods" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Informants_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Persons_Nationalities" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Observants_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_Reports_Observants" ManuallyRouted="false" />
+        <AssociationConnector Association="PETSurvDBModel.FK_OldReports_Reports" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
