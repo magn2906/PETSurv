@@ -76,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PET.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Agents.cs">
@@ -128,6 +132,9 @@
     </Compile>
     <Compile Include="Model\Reports.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PET.xaml.cs">
+      <DependentUpon>PET.xaml</DependentUpon>
     </Compile>
     <Compile Include="PETData.cs" />
     <Compile Include="PETFunc.cs" />

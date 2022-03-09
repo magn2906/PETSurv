@@ -11,7 +11,7 @@ namespace PETSurv
     class PETData
     {
         #region Properties
-        public ObservableCollection<Logins> LoginsList => LoginsList;
+        public ObservableCollection<Logins> LoginsList => loginsList;
 
         public ObservableCollection<Persons> PersonsList => personsList;
 
@@ -27,7 +27,26 @@ namespace PETSurv
 
         public ObservableCollection<Nationalities> NationalitiesList => nationalitiesList;
 
-        public ObservableCollection<Reports> ReportsList => reportsList;
+        public ObservableCollection<Reports> ReportsList 
+        {
+            get
+            {
+                ObservableCollection<Reports> _reportsList = new ObservableCollection<Reports>();
+                foreach (Reports report in reportsList)
+                {
+                    _reportsList.Add(report);
+
+                    foreach (OldReports oldReport in OldReportsList)
+                    {
+                        if (report.Id == oldReport.ReportsId)
+                        {
+                            _reportsList.Remove(report);
+                        }
+                    }
+                }
+                return _reportsList; 
+            }
+        }
 
         public ObservableCollection<OldReports> OldReportsList => oldReportsList;
 
@@ -325,6 +344,44 @@ namespace PETSurv
             db.Reports.Add(newReport);
 
             db.SaveChanges();
+        }
+        #endregion
+        #region Groups & Group Members
+        public void AddGroup(Groups group)
+        {
+            db.Groups.Add(group);
+            db.SaveChanges();
+        }
+        public void DeleteGroup(Groups group)
+        {
+            List<GroupMembers> thisGroupMembers = new List<GroupMembers>();
+            foreach (GroupMembers gm in GroupMembersList)
+            {
+                if (gm.GroupsId == group.Id)
+                {
+                    db.GroupMembers.Remove(gm);
+                }
+            }
+
+            db.Groups.Remove(group);
+            db.SaveChanges();
+        }
+
+        public void AddGroupMember(Groups group, Observants observant)
+        {
+            GroupMembers groupMember = new GroupMembers()
+            {
+                GroupsId = group.Id,
+                ObservantsId = observant.Id
+            };
+        }
+        public void RemoveGroupMember(Groups group, Observants observant)
+        {
+            GroupMembers existing = db.GroupMembers.Single(g => g.GroupsId == group.Id && g.ObservantsId == observant.Id);
+            if (existing != null)
+            {
+                db.GroupMembers.Remove(existing);
+            }
         }
         #endregion
         #endregion

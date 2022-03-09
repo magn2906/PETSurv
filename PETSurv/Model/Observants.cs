@@ -29,5 +29,10 @@ namespace PETSurv.Model
         public virtual Persons Persons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reports> Reports { get; set; }
+
+        public override string ToString()
+        {
+            return Persons.Name;
+        }
     }
 }

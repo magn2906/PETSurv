@@ -26,5 +26,15 @@ namespace PETSurv
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (func.LogIn(tbxUsernameInput.Text, pswPasswordInput.Password))
+            {
+                PET PETWindow = new PET();
+                PETWindow.Show();
+                this.Close();
+            }
+        }
     }
 }

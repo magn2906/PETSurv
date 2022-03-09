@@ -1,0 +1,106 @@
+﻿<Window x:Class="PETSurv.PET"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PETSurv"
+        mc:Ignorable="d"
+        Title="PET" Height="450" Width="800">
+    <Grid>
+        <TabControl TabStripPlacement="Right">
+            <TabItem Header="Agents">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgAgents" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="270,0,0,0" VerticalAlignment="Top" Height="400" Width="400" ItemsSource="{Binding AgentsList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Persons.Name}"/>
+                            <DataGridTextColumn Header="Address" Binding="{Binding Persons.Address}"/>
+                            <DataGridTextColumn Header="Nationality" Binding="{Binding Persons.Nationalities}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="btnDeleteAgent" Click="DeleteAgent" Content="Delete"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Create Agent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Address" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nationality" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                    <Label Content="CPR" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Height" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Eye Color" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Hair Color" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Username" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Password" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnCreateAgent" Content="Create" HorizontalAlignment="Left" Margin="15,310,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.099,0.115" Click="CreateAgent"/>
+                    <TextBox x:Name="tbxAgentNameInput" HorizontalAlignment="Left" Height="25" Margin="95,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentAddressInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="cbxAgentNationalityInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,100,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding NationalitiesList}"/>
+                    <TextBox x:Name="tbxAgentCPRInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentHeightInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentEyeColorInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentHairColorInput" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="95,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentUsernameInput" HorizontalAlignment="Left" Height="25" Margin="95,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAgentPasswordInput" HorizontalAlignment="Left" Height="25" Margin="95,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,70,0,0" VerticalAlignment="Top" Height="25" Width="25" Checked="EnableAddress" Unchecked="DisableAddress"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,100,0,0" VerticalAlignment="Top" Height="25" Width="25" Checked="EnableNationality" Unchecked="DisableNationality"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,130,0,0" VerticalAlignment="Top" Height="25" Width="25"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,160,0,0" VerticalAlignment="Top" Height="25" Width="25"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,190,0,0" VerticalAlignment="Top" Height="25" Width="25"/>
+                    <CheckBox Content="" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="220,220,0,0" VerticalAlignment="Top" Height="25" Width="25"/>
+                    <Button Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="190,310,0,0" VerticalAlignment="Top" Width="75"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Informants">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Observants">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Groups">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Nationalities">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Currencies">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Payment Methods">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Reports">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgReports" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="400" Margin="323,0,0,0" VerticalAlignment="Top" Width="350" ItemsSource="{Binding ReportsList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Observant" Binding="{Binding Observants}"/>
+                            <DataGridTextColumn Header="Comment" Binding="{Binding Comment}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Create Report" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Observant" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Comment" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Create" Click="CreateReport" HorizontalAlignment="Left" Margin="18,125,0,0" VerticalAlignment="Top" Width="75"/>
+                    <ComboBox x:Name="cbxReportObservantInput" HorizontalAlignment="Left" Margin="120,40,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding ObservantsList}"/>
+                    <TextBox x:Name="tbxReportCommentInput" HorizontalAlignment="Left" Height="75" Margin="120,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxReportCommentEditInput" HorizontalAlignment="Left" Height="75" Margin="118,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                    <Button Click="btnAddComment" Content="Add comment to selected report" HorizontalAlignment="Left" Margin="118,375,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.038,1.671" Height="25"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Logs / Old Reports">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid ItemsSource="{Binding OldReportsList}" HorizontalAlignment="Left" Height="393" Margin="343,10,0,0" VerticalAlignment="Top" Width="320">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Observant" Binding="{Binding Reports.Observants}"/>
+                            <DataGridTextColumn Header="Comment" Binding="{Binding Reports.Comment}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
