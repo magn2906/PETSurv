@@ -151,14 +151,8 @@ namespace PETSurv
         #region Methods
         #region Create Update Delete
         #region Login
-        public void AddLogin(string username, string password)
+        public void AddLogin(Logins login)
         {
-            Logins login = new Logins
-            {
-                Username = username,
-                Password = password
-            };
-
             db.Logins.Add(login);
             db.SaveChanges();
         }
@@ -169,6 +163,9 @@ namespace PETSurv
             Persons agentPerson = agent.Persons;
             db.Persons.Add(agentPerson);
 
+            Logins agentLogin = agent.Logins;
+            db.Logins.Add(agentLogin);
+
             db.Agents.Add(agent);
             db.SaveChanges();
         }
@@ -176,11 +173,110 @@ namespace PETSurv
         {
             Persons person = db.Persons.Single(p => p.Id == agent.PersonsId);
             db.Persons.Remove(person);
+
             db.Agents.Remove(agent);
             db.SaveChanges();
         }
-        #endregion
 
+        public void UpdateAgent(Agents agent)
+        {
+            Persons existingPerson = db.Persons.Single(p => p.Id == agent.PersonsId);
+            if (existingPerson != null)
+            {
+                existingPerson = agent.Persons;
+            }
+
+            Agents existing = db.Agents.Single(a => a.Id == agent.Id);
+            if (existing != null)
+            {
+                existing = agent;
+            }
+
+            db.SaveChanges();
+        }
+        #endregion
+        #region Informants
+        public void AddInformant(Informants informant)
+        {
+            Persons informantPerson = informant.Persons;
+            db.Persons.Add(informantPerson);
+
+            Logins informantLogin = informant.Logins;
+            db.Logins.Add(informantLogin);
+
+            db.Informants.Add(informant);
+            db.SaveChanges();
+        }
+        public void DeleteInformant(Informants informant)
+        {
+            Persons person = db.Persons.Single(p => p.Id == informant.PersonsId);
+            db.Persons.Remove(person);
+
+            Logins login = db.Logins.Single(l => l.Id == informant.LoginsId);
+            db.Logins.Remove(login);
+
+            db.Informants.Remove(informant);
+            db.SaveChanges();
+        }
+        public void UpdateInformant(Informants informant)
+        {
+            Persons existingPerson = db.Persons.Single(p => p.Id == informant.PersonsId);
+            if (existingPerson != null)
+            {
+                existingPerson = informant.Persons;
+            }
+
+            Informants existing = db.Informants.Single(i => i.Id == informant.Id);
+            if (existing != null)
+            {
+                existing = informant;
+            }
+        }
+        #endregion
+        #region Observant
+        public void AddObservant(Observants observant)
+        {
+            Persons informantPerson = observant.Persons;
+            db.Persons.Add(informantPerson);
+
+            db.Observants.Add(observant);
+            db.SaveChanges();
+        }
+        public void DeleteObservant(Observants observant)
+        {
+            Persons person = db.Persons.Single(p => p.Id == observant.PersonsId);
+            db.Persons.Remove(person);
+
+            db.Observants.Remove(observant);
+            db.SaveChanges();
+        }
+        public void UpdateObservant(Observants observant)
+        {
+            Persons existingPerson = db.Persons.Single(p => p.Id == observant.PersonsId);
+            if (existingPerson != null)
+            {
+                existingPerson = observant.Persons;
+            }
+
+            Observants existing = db.Observants.Single(o => o.Id == observant.Id);
+            if (existing != null)
+            {
+                existing = observant;
+            }
+        }
+        #endregion
+        #region
+        public void AddPaymentMethod(PaymentMethods paymentMethod)
+        {
+            db.PaymentMethods.Add(paymentMethod);
+            db.SaveChanges();
+        }
+        public void DeletePaymentMethod(PaymentMethods paymentMethod)
+        {
+            db.PaymentMethods.Remove(paymentMethod);
+            db.SaveChanges();
+        }
+        #endregion
         #endregion
         #endregion
     }

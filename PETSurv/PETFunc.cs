@@ -7,7 +7,7 @@ using PETSurv.Model;
 
 namespace PETSurv
 {
-    public class PETFunc
+    class PETFunc
     {
         PETData data = new PETData();
 
