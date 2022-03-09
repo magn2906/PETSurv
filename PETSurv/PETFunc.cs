@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PETSurv.Model;
 
 namespace PETSurv
 {
-    class PETFunc
+    public class PETFunc
     {
+        PETData data = new PETData();
+
+
     }
 }

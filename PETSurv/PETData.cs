@@ -150,10 +150,37 @@ namespace PETSurv
 
         #region Methods
         #region Create Update Delete
-        public void AddLogin()
+        #region Login
+        public void AddLogin(string username, string password)
         {
+            Logins login = new Logins
+            {
+                Username = username,
+                Password = password
+            };
 
+            db.Logins.Add(login);
+            db.SaveChanges();
         }
+        #endregion
+        #region Agents
+        public void AddAgent(Agents agent)
+        {
+            Persons agentPerson = agent.Persons;
+            db.Persons.Add(agentPerson);
+
+            db.Agents.Add(agent);
+            db.SaveChanges();
+        }
+        public void DeleteAgent(Agents agent)
+        {
+            Persons person = db.Persons.Single(p => p.Id == agent.PersonsId);
+            db.Persons.Remove(person);
+            db.Agents.Remove(agent);
+            db.SaveChanges();
+        }
+        #endregion
+
         #endregion
         #endregion
     }
